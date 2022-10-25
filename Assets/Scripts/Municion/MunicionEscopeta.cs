@@ -14,7 +14,7 @@ public class MunicionEscopeta : MonoBehaviour
         CuadroDeComentario.instance.Comentar(lineasDeDialogos);
         AtributosArmas.cantidadDeCargardoresEscopetas += AtributosArmas.tamanioCargadorEscopeta;
 
-        if (AtributosArmas.TengoLaPistola == false)
+        if (AtributosArmas.tengoLaEscopeta == false)
         {
             AtributosArmas.tengoLaEscopeta = true;
             escopeta.SetActive(true);
