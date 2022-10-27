@@ -1513,7 +1513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.016368423, y: 0.18622223}
   m_AnchorMax: {x: 0.55163157, y: 0.9738888}
-  m_AnchoredPosition: {x: 0, y: -0.000030518}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376354488
@@ -2677,7 +2677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &703157697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4398,6 +4398,7 @@ GameObject:
   - component: {fileID: 1235016679}
   - component: {fileID: 1235016681}
   - component: {fileID: 1235016682}
+  - component: {fileID: 1235016683}
   m_Layer: 0
   m_Name: Menu Manager
   m_TagString: Untagged
@@ -4471,6 +4472,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d500b296942c4694d99f818137bfad1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1235016683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235016678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b033439cf1e73b4faad358bb5aa0cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  municion: {fileID: 0}
+  barraSalud: {fileID: 0}
 --- !u!1 &1251001590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5249,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1586254910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1235016683}
+        m_TargetAssemblyTypeName: Interfas, Assembly-CSharp
+        m_MethodName: CargarPartida
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1586254910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,7 +5564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0075188, y: -7.838318}
+  m_AnchoredPosition: {x: 0.007507324, y: -7.838318}
   m_SizeDelta: {x: 1203.4, y: 1606.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683960948

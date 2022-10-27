@@ -11,7 +11,7 @@ public static class AtributosNaves
     public static float salud = 50;
     public static float saludPersonaje = 50;
     public static float rotacionEnvuelo = 80;
-    public static float rotacionEnModoCombate = 80;
+    public static float rotacionEnModoCombate = 1;
 
 
    

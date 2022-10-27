@@ -20,14 +20,41 @@ public class Animacion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        x = MoverPersonajeAPie.instance.doblarH;
-        y = MoverPersonajeAPie.instance.doblarV;
 
-       
+        animator.SetFloat("velX", x);
+        animator.SetFloat("velY", y);
+
+
+        if (MoverPersonajeAPie.instance.caminando)
+        {
+            y = 1;
+        }
+        if (MoverPersonajeAPie.instance.retroceso)
+        {
+            y = -1;
+        }
+        if(MoverPersonajeAPie.instance.retroceso==false && MoverPersonajeAPie.instance.caminando==false )
+        {
+            y = 0; 
+        }
+        if (MoverPersonajeAPie.instance.derecha)
+        {
+            x = 1;
+        }
         
-            animator.SetFloat("velX", x);
-            animator.SetFloat("velY", y);
+        if (MoverPersonajeAPie.instance.izquierda)
+        {
+            x = -1;
+        }
+         if(MoverPersonajeAPie.instance.izquierda == false && MoverPersonajeAPie.instance.derecha == false)
+        {
+            x = 0;
+        }
+
+
+
+        
+        
 
         
 

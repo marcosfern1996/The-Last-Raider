@@ -9,7 +9,7 @@ public static class AtributosEnemigos
     public static float danioMeteoro = 5;
 
     public static float saludSangria = 30;
-    public static float velocidadSangria = 3;
+    public static float velocidadSangria = 2;
     public static float danioEnemigoSangria = 20;
 
     public static float saludEnemigo3;

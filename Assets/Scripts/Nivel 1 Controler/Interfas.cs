@@ -55,4 +55,22 @@ public class Interfas : MonoBehaviour
             activarMenus.GameOver();
         }
     }
+
+    public void GuardarPartida()
+    {
+        GuardarDatos.GuardarPartida(MoverPersonajeAPie.instance);
+        Debug.Log("se guardo la partida");
+
+    }
+    public void CargarPartida()
+    {
+        DatosJugador datosJugador = GuardarDatos.CargarPartida();
+        MoverPersonajeAPie.instance.saludPersanjeIndi = datosJugador.saludActual;
+        MoverPersonajeAPie.instance.transform.position = new Vector3(datosJugador.posicionJugador[0], datosJugador.posicionJugador[1], datosJugador.posicionJugador[2]);
+        AtributosArmas.cantidadDeCargadores9mm = datosJugador.cantidadDeCargadores9mm;
+        AtributosArmas.cantidaBalas9mm = datosJugador.cantidadDeBalasPistola;
+        AtributosArmas.cantidadDeCargardoresEscopetas = datosJugador.cantidadDeCargadoresEscopeta;
+        AtributosArmas.cantidadBalasEscopeta = datosJugador.cantidadDeBalasEscopeta;
+        Debug.Log("se cargo la partida");
+    }
 }

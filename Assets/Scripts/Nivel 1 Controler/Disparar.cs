@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class Disparar : MonoBehaviour
     public float contador = 0;
     public LayerMask objetivo;
     RaycastHit hit;
-    public float faltante;
+    public int faltante;
 
 
 
@@ -48,6 +49,7 @@ public class Disparar : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        /*
         if (AtributosArmas.activar9mm)
         {
             Gizmos.color = Color.green;
@@ -57,7 +59,7 @@ public class Disparar : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.forward * AtributosArmas.distanciaEscopeta, Color.blue);
         }
-        
+        */
     }
 
     public void activar9mm()
@@ -141,7 +143,7 @@ public class Disparar : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.forward * AtributosArmas.distancia9mm, out hit))
                 {
-                    if (hit.transform.tag == "Sangria")
+                    if (hit.transform.tag == "Enemigo")
                     {
 
                         hit.transform.gameObject.GetComponent<Sangria>().RestarVida(AtributosArmas.danio9mm);
@@ -163,7 +165,7 @@ public class Disparar : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.forward * AtributosArmas.distanciaEscopeta, out hit))
                 {
-                    if (hit.transform.tag == "Sangria")
+                    if (hit.transform.tag == "Enemigo")
                     {
                         // hit.transform.gameObject.GetComponent<Meteoro>().RestarVida(AtributosArmas.danioEscopeta);
                         hit.transform.gameObject.GetComponent<Sangria>().RestarVida(AtributosArmas.danioEscopeta);

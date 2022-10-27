@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MunicionEscopeta : MonoBehaviour
 {
@@ -8,19 +9,33 @@ public class MunicionEscopeta : MonoBehaviour
     public GameObject escopeta;
 
     // Start is called before the first frame update
-
+    private void Update()
+    {
+        if (AtributosArmas.activarEscopeta == true)
+        {
+            escopeta.GetComponent<Image>().color = Color.blue;
+        }
+        else
+        {
+            escopeta.GetComponent<Image>().color = Color.red;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        CuadroDeComentario.instance.Comentar(lineasDeDialogos);
-        AtributosArmas.cantidadDeCargardoresEscopetas += AtributosArmas.tamanioCargadorEscopeta;
-
-        if (AtributosArmas.tengoLaEscopeta == false)
+        if (other.tag == "Player")
         {
-            AtributosArmas.tengoLaEscopeta = true;
-            escopeta.SetActive(true);
-        }
+            CuadroDeComentario.instance.Comentar(lineasDeDialogos);
+            AtributosArmas.cantidadDeCargardoresEscopetas += AtributosArmas.tamanioCargadorEscopeta;
 
-        Destroy(this.gameObject);
+            if (AtributosArmas.tengoLaEscopeta == false)
+            {
+                AtributosArmas.tengoLaEscopeta = true;
+                escopeta.SetActive(true);
+            }
+
+            Destroy(this.gameObject);
+        }
+        
 
     }
 }

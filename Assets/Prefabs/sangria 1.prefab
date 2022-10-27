@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5432627070347552969}
   m_Layer: 0
   m_Name: sangria 1
-  m_TagString: Sangria
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2998890969883598065}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.23, y: 2.41, z: 54.95}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
@@ -48,19 +48,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
   detectado: 0
   atacar: 0
   lmJugador:
     serializedVersion: 2
     m_Bits: 8
-  jugador: {fileID: 0}
-  mirarJugador: {x: 0, y: 0, z: 0}
+  ubicacionJugador: {fileID: 0}
   salud: 0
-  tocandopared: 0
+  jugador: {fileID: 0}
+  ubicacion: {x: 0, y: 0, z: 0}
   frenteAjugador: 0
-  pared:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!135 &1108962353070905913
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -157,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3ac78d309ebe77949b07b5babf5f33b9, type: 3}
       propertyPath: m_TagString
-      value: Sangria
+      value: Enemigo
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: 3ac78d309ebe77949b07b5babf5f33b9, type: 3}
       propertyPath: m_Convex

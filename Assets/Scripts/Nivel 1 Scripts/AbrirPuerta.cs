@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class AbrirPuerta : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class AbrirPuerta : MonoBehaviour
     public bool actPuerta;
     public Transform puertaAbierta;
     public static AbrirPuerta instance;
+    public string nombreDelSigNivel;
 
     public string lineasDeDialogos;
 
@@ -36,6 +39,8 @@ public class AbrirPuerta : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
+
+        SceneManager.LoadScene(nombreDelSigNivel);        /*
         if ((Misiones.instance.consigueLallave == true && other.tag == "Player") ||( Desbloquedo && other.tag == "Player"))
         {
 
@@ -44,7 +49,7 @@ public class AbrirPuerta : MonoBehaviour
         else {
 
             CuadroDeComentario.instance.Comentar(lineasDeDialogos);
-        }
+        }*/
     }
     private void OnTriggerExit(Collider other)
     {

@@ -6,80 +6,85 @@ using UnityEngine.UI;
 
 public class CambioDeCamara : MonoBehaviour
 {
-    [SerializeField] private GameObject[] camaras;
+    public static CambioDeCamara instance;
+    public  GameObject camaras;
     public int camActiva;
     public bool seActivoLaCamara = false;
-
-    public Toggle checkbox;
-    public GameObject check;
+    public int numeroDeCamara;
+    
 
     void Start()
     {
-        camaras[0].SetActive(true);
-        checkbox = check.GetComponent<Toggle>();
+        instance = this;
+        
     }
 
 
     private void Update()
     {
-       
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" )
+        if (other.tag == "Player")
         {
-            ActivarCamara1();
-
+            ActivarCamara();
+            
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            ActivarCamara0();
+            CerrarCamaras();
         }
     }
 
     public void CerrarCamaras()
     {
-        for (int x = 0; x < camaras.Length; x++)
-        {
-            camaras[x].SetActive(false);
-        }
+
+        camaras.SetActive(false);
+
+
+
     }
 
-    public void ActivarCamara0()
+    public void ActivarCamara()
     {
+            
+                camaras.SetActive(true);
+              
+               // CerrarCamaras();
        
-        seActivoLaCamara = false;
-        CerrarCamaras();
 
-        camaras[0].SetActive(true);
-    }
-    public void ActivarCamara1()
-    {
-       
-        seActivoLaCamara = true;
-        CerrarCamaras();
 
-        camaras[1].SetActive(true);
-        
-    }
-    public void ActivarConCheckList()
-    {
-        if (checkbox.isOn)
-        {
-            ActivarCamara0();
-            AtributosPersonaje.rotacionPersonaje = AtributosPersonaje.rotacionPersonaje * -1;
-            AtributosPersonaje.velocidadPersonaje=AtributosPersonaje.velocidadPersonaje  *-1;
-        }
-        else if(!checkbox.isOn)
-        {
-            ActivarCamara1();
-            AtributosPersonaje.rotacionPersonaje = AtributosPersonaje.rotacionPersonaje * -1;
-            AtributosPersonaje.velocidadPersonaje = AtributosPersonaje.velocidadPersonaje * -1;
+            // camaras[0].SetActive(true);
+     }
+        /* public void ActivarCamara1()
+         {
 
-        }
-    }
+             seActivoLaCamara = true;
+             CerrarCamaras();
+
+             camaras[1].SetActive(true);
+
+         }*/
+        /* public void ActivarConCheckList()
+         {
+             if (checkbox.isOn)
+             {
+                 ActivarCamara0();
+                 AtributosPersonaje.rotacionPersonaje = AtributosPersonaje.rotacionPersonaje * -1;
+                 AtributosPersonaje.velocidadPersonaje=AtributosPersonaje.velocidadPersonaje  *-1;
+             }
+             else if(!checkbox.isOn)
+             {
+                 ActivarCamara1();
+                 AtributosPersonaje.rotacionPersonaje = AtributosPersonaje.rotacionPersonaje * -1;
+                 AtributosPersonaje.velocidadPersonaje = AtributosPersonaje.velocidadPersonaje * -1;
+
+             }
+         }*/
+    
 }
