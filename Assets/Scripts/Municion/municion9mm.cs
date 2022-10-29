@@ -6,29 +6,18 @@ using UnityEngine.UI;
 public class municion9mm : MonoBehaviour
 {
     public string lineasDeDialogos;
-    public GameObject pistola;
-    public int pistolaTrue;
+   // public GameObject pistola;
+    
 
     private void Awake()
     {
-        pistolaTrue = PlayerPrefs.GetInt("TengoLaPistola",0);
+        
 
-        if (pistolaTrue != 0)
-        {
-            pistola.SetActive(true);
-        }
     }
 
     private void Update()
     {
-        if (AtributosArmas.activar9mm == true)
-        {
-            pistola.GetComponent<Image>().color=Color.blue;
-        }
-        else
-        {
-            pistola.GetComponent<Image>().color=Color.red;
-        }
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,10 +27,9 @@ public class municion9mm : MonoBehaviour
             CuadroDeComentario.instance.Comentar(lineasDeDialogos);
             AtributosArmas.cantidadDeCargadores9mm += AtributosArmas.TamanioCargador9mm;
 
-            if (pistolaTrue == 0)
+            if (AtributosArmas.TengoLaPistola==false)
             {
-               // GuardarDatos.instance.guardarDatosDePistola(1, AtributosArmas.cantidadDeCargadores9mm += AtributosArmas.TamanioCargador9mm);
-                pistola.SetActive(true);
+                AtributosArmas.TengoLaPistola = true;
             }
 
 

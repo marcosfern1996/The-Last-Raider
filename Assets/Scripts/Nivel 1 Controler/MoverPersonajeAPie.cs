@@ -24,10 +24,28 @@ public class MoverPersonajeAPie : MonoBehaviour
     public float velocidadPersonajeIndi;
     public LayerMask pared;
     public bool tocandoPared;
-   // Rigidbody rb;
+    // Rigidbody rb;
+
+    public static MoverPersonajeAPie Instance;
     
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
 
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+        }
+    
+}
 
 
     void Start()

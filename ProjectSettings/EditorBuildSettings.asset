@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Nivel 1/SALA ESCONDITE.unity
-    guid: 21dfada221d27484580eb48808649f2c
-  - enabled: 1
-    path: Assets/Scenes/Nivel 1/pasillo Escondite.unity
+    path: Assets/Scenes/Escondite/pasillo Escondite.unity
     guid: 6f228cc2f4c412e4e8a587bbfbfe0d8c
+  - enabled: 1
+    path: Assets/Scenes/Escondite/SALA ESCONDITE.unity
+    guid: 21dfada221d27484580eb48808649f2c
   - enabled: 0
     path: Assets/Scenes/Nivel 1/Nivel 1 Intro.unity
     guid: a0a5c5b1aec4eb249888156f36b04461

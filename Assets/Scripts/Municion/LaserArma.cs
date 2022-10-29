@@ -19,31 +19,32 @@ public class LaserArma : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if( Physics.Raycast(transform.position, transform.forward, out hit))
+        if( Physics.Raycast(MoverPersonajeAPie.instance.GetComponent<Transform>().position, transform.forward, out hit))
         {
             if(hit.collider)
             {
+                //Debug.Log(hit.collider.gameObject);
                 if (hit.collider.tag == "Enemigo")
                 {
                     //ln.startColor = Color.red;
                    // ln.endColor = Color.red;
-                    renderer.material.color = new Color(0.07f, 0, 1,0.8f);
+                    renderer.material.color = new Color(0.07f, 0, 1,0.4f);
                    // renderer.material.color = ln.endColor;
                 }
                 else
                 {
                    // ln.startColor = Color.green;
                     //ln.endColor = Color.green;
-                   renderer.material.color = new Color(0.064f,1,0,0.8f);
+                   renderer.material.color = new Color(0.064f,1,0,0.4f);
                     //renderer.material.color = ln.endColor;
                 }
                     
-                ln.SetPosition(0, transform.position);
+                ln.SetPosition(0, MoverPersonajeAPie.instance.GetComponent<Transform>().position);
                 ln.SetPosition(1, hit.point);
             }
             else
             {
-                ln.SetPosition(0, transform.position);
+                ln.SetPosition(0, MoverPersonajeAPie.instance.GetComponent<Transform>().position);
                 ln.SetPosition(1, transform.forward);
             }
             

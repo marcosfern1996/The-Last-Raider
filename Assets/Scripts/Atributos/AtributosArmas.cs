@@ -6,7 +6,7 @@ public class AtributosArmas : MonoBehaviour
 {
     
     // pistola 9mm;
-    //public static bool TengoLaPistola = false;  
+    public static bool TengoLaPistola = false;  
     public static float danio9mm = 8;            //cantidad de daño de la pistola
     public static float distancia9mm = 10;      //distancia de la pistola
     public static int TamanioCargador9mm = 12;  //tamaño del cartucho

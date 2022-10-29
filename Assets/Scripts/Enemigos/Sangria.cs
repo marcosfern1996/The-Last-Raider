@@ -41,7 +41,8 @@ public class Sangria : MonoBehaviour
     void Start()
     {
         posicionInicial = new Vector3(transform.position.x,transform.position.y,transform.position.z);
-
+        ubicacionJugador = GameObject.Find("Personaje Pie");
+        jugador = ubicacionJugador.transform;
     }
 
     // Update is called once per frame
@@ -83,24 +84,24 @@ public class Sangria : MonoBehaviour
 
                     }
 
+            
+                     else
+                    {
+                      NavMeshAgent.SetDestination(posicionInicial);
+                     }
+
+
+        }
+
+
             if (salud <= 0)
             {
                 Destroy(this.gameObject);
             }
-            }
-            else
-            {
-                NavMeshAgent.SetDestination(posicionInicial);
-            }
-
-
         }
-       
 
-        
 
-        
-        
+
     }
 
     public void RestarVida(float danio)

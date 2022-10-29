@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,17 +12,33 @@ public class CambioDeCamara : MonoBehaviour
     public int camActiva;
     public bool seActivoLaCamara = false;
     public int numeroDeCamara;
-    
+   // CinemachineVirtualCamera camara;
+    public GameObject jugador;
+    public Transform tarjetJugador;
+   
 
     void Start()
     {
         instance = this;
-        
+        camaras.GetComponent<CinemachineVirtualCamera>();
+        // camara = gameObject.AddComponent<CinemachineVirtualCamera>();
+        jugador = GameObject.Find("Personaje Pie");
+        jugador.GetComponent<MoverPersonajeAPie>();
+        tarjetJugador = jugador.transform;
+        //camara.LookAtTargetChanged = jugador.transform;
+
+        camaras.GetComponent<CinemachineVirtualCamera>().LookAt = (jugador.transform);
+
+
     }
 
 
     private void Update()
     {
+       
+
+
+
 
     }
 
@@ -29,6 +46,7 @@ public class CambioDeCamara : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            
             ActivarCamara();
             
         }

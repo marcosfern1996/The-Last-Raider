@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class Animacion : MonoBehaviour
 {   
-    public Animator animator;
+     public Animator animator;
     public float x;
     public float y;
-    public static Animacion instance;
+    public static Animacion Instance;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        instance = this;
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+        // Start is called before the first frame update
+        void Start()
+    {
+        Instance = this;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,5 +74,10 @@ public class Animacion : MonoBehaviour
 
         
 
+    }
+
+    public void DispararSonido(string nombre)
+    {
+        animator.SetTrigger(""+ nombre);
     }
 }

@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 8154348315200860480}
   - component: {fileID: 4875694117475074997}
   - component: {fileID: 8824343703365827}
-  - component: {fileID: 1403667910984249526}
   - component: {fileID: 1452092600}
   - component: {fileID: 1452092607}
   m_Layer: 0
@@ -209,22 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineasDeDialogos: Municion Escopeta
-  escopeta: {fileID: 0}
---- !u!114 &1403667910984249526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7633850628138402897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34aad8720daa2f41938f82b8bc711e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelDialogo: {fileID: 0}
-  textoDeDialogo: {fileID: 0}
-  mostrando: 0
 --- !u!54 &1452092600
 Rigidbody:
   m_ObjectHideFlags: 0

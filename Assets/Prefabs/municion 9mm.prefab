@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1521436731975690703}
   - component: {fileID: 1521436731975690702}
   - component: {fileID: 1521436731975690701}
-  - component: {fileID: 5508574589788669094}
   m_Layer: 0
   m_Name: municion 9mm
   m_TagString: Untagged
@@ -113,22 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineasDeDialogos: Municion 9mm
-  pistola: {fileID: 0}
---- !u!114 &5508574589788669094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521436731975690700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34aad8720daa2f41938f82b8bc711e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelDialogo: {fileID: 0}
-  textoDeDialogo: {fileID: 0}
-  mostrando: 0
+  pistolaTrue: 0
 --- !u!1 &8192400410168466686
 GameObject:
   m_ObjectHideFlags: 0

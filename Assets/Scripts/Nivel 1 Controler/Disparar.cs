@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
-using Microsoft.Unity.VisualStudio.Editor;
+//using Microsoft.Unity.VisualStudio.Editor;
+using Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class Disparar : MonoBehaviour
     public AudioClip balaEscopeta;
     public GameObject personaje;
     public float contador = 0;
-    public LayerMask objetivo;
+   // public LayerMask objetivo;
     RaycastHit hit;
     public int faltante;
 
@@ -133,7 +134,8 @@ public class Disparar : MonoBehaviour
             
             if (AtributosArmas.cantidaBalas9mm > 0 && AtributosArmas.cantidadDeCargadores9mm >= 0)
             {
-                Animacion.instance.animator.SetTrigger("disparo pistola");
+                Animacion.Instance.DispararSonido("disparo pistola");
+                //Animacion.instance.animator.SetTrigger("disparo pistola");
                 AtributosArmas.cantidaBalas9mm--;
                 /*if(AtributosArmas.cantidaBalas9mm == 0)
                 {
@@ -159,7 +161,8 @@ public class Disparar : MonoBehaviour
         {
             if (AtributosArmas.cantidadBalasEscopeta > 0)
             {
-                Animacion.instance.animator.SetTrigger("disparo Escopeta");
+                Animacion.Instance.DispararSonido("disparo Escopeta");
+                //Animacion.instance.animator.SetTrigger("disparo Escopeta");
                 AtributosArmas.cantidadBalasEscopeta--;
                 fxSource.PlayOneShot(balaEscopeta);
 
