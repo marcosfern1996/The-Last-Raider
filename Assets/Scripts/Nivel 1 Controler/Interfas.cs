@@ -7,7 +7,7 @@ using UnityEditor;
 using TMPro;
 
 public class Interfas : MonoBehaviour
-{
+{/*
     public TextMeshProUGUI municion;
     public Image barraSalud;
     ActivarMenus activarMenus;
@@ -19,6 +19,7 @@ public class Interfas : MonoBehaviour
     void Start()
     {
         activarMenus = GetComponent<ActivarMenus>();    
+       
     }
 
     // Update is called once per frame
@@ -59,8 +60,8 @@ public class Interfas : MonoBehaviour
             municion.text =  AtributosArmas.cantidadBalasEscopeta + " / " + AtributosArmas.cantidadDeCargardoresEscopetas;
 
         }
-        
-        saludActual = MoverPersonajeAPie.instance.saludPersanjeIndi;
+       
+      // saludActual = MoverPersonajeAPie.instance.saludPersanjeIndi;
         BarraDeSAlud();
 
     }
@@ -76,5 +77,5 @@ public class Interfas : MonoBehaviour
     }
 
     
-    
+    */
 }

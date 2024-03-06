@@ -113,5 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danioANave: 5
   primerContacto: 0
-  chocque: 0
+  choque: 0
   salud: 40
+  items:
+  - {fileID: 2322789370450927255, guid: 043744afbabc0e141b235314b333ca63, type: 3}
+  - {fileID: 2322789370450927255, guid: c8d39c908393e8c47af53a04a7a6ad73, type: 3}
+  anim: {fileID: 2273832991953550852, guid: c1df71eb9fb562346b1a1c5b66c956ac, type: 3}

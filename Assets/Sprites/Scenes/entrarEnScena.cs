@@ -21,8 +21,8 @@ public class entrarEnScena : MonoBehaviour
             if (nombreGuardado==ultimaSalidaNombre)
             {
            
-                MoverPersonajeAPie.instance.GetComponent<Transform>().position = posicion.transform.position;
-                MoverPersonajeAPie.instance.GetComponent<Transform>().eulerAngles = posicion.transform.eulerAngles;
+              //  MoverPersonajeAPie.instance.GetComponent<Transform>().position = posicion.transform.position;
+              //  MoverPersonajeAPie.instance.GetComponent<Transform>().eulerAngles = posicion.transform.eulerAngles;
             
             }
         }

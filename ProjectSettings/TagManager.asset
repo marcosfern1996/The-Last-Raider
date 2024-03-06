@@ -9,6 +9,10 @@ TagManager:
   - Meteorito
   - Sangria
   - Puerta
+  - enemyShip
+  - BalaNave
+  - Bullet
+  - BulletPlayer
   layers:
   - Default
   - TransparentFX

@@ -20,10 +20,10 @@ public class CambioDeCamara : MonoBehaviour
     void Start()
     {
         instance = this;
-        camaras.GetComponent<CinemachineVirtualCamera>();
+        //camaras.GetComponent<CinemachineVirtualCamera>();
         // camara = gameObject.AddComponent<CinemachineVirtualCamera>();
         jugador = GameObject.Find("Personaje Pie");
-        jugador.GetComponent<MoverPersonajeAPie>();
+       // jugador.GetComponent<MoverPersonajeAPie>();
         tarjetJugador = jugador.transform;
         //camara.LookAtTargetChanged = jugador.transform;
 

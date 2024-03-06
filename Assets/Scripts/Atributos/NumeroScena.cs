@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NumeroScena : MonoBehaviour
 {
-    
+   /* 
     public static NumeroScena instance;
     public int numeroDeScena;
     private void Awake()
@@ -16,5 +16,5 @@ public class NumeroScena : MonoBehaviour
     void Update()
     {
         
-    }
+    }*/
 }
