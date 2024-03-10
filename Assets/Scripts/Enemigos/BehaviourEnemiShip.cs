@@ -16,7 +16,8 @@ public class BehaviourEnemiShip : MonoBehaviour
     public GameObject mejora;
     float contador = 0;
     public ParticleSystem anim;
-
+    bool deadforshield;
+    public AudioSource explocion;
 
     // Start is called before the first frame update
     void Start()
@@ -76,11 +77,15 @@ public class BehaviourEnemiShip : MonoBehaviour
         if (salud <= 0)
         {
             int probabilidad = Random.Range(0, 100);
-            if (probabilidad < 30)
+            if (probabilidad < 45)
             {
-                
-                Instantiate(mejora, spawn.transform.position, spawn.transform.rotation);
+                if (!deadforshield && Atributos.Mejoras.Especial == 1 )
+                {
+                    Atributos.Nave.powerUp += Random.Range(5,15);
+                }
                
+                Instantiate(mejora, spawn.transform.position, spawn.transform.rotation);
+                Instantiate(explocion, this.transform.position, this.transform.rotation);
             }
             
             Destruir();
@@ -101,5 +106,13 @@ public class BehaviourEnemiShip : MonoBehaviour
     public void RestarVida(float cantidad)
     {
         salud -= cantidad;
+    }
+     void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PowerUp")
+        {
+            deadforshield = true;
+            salud = 0;
+        }
     }
 }

@@ -24,7 +24,7 @@ public class BalaJugador3 : MonoBehaviour
     private void Update()
     {
         cont += 1 * Time.deltaTime;
-        if (cont > 5)
+        if (cont > 1)
         {
             Destroy(this.gameObject);
         }
@@ -54,6 +54,18 @@ public class BalaJugador3 : MonoBehaviour
             {
                 // Llama a la función RestarVida() en el script Meteoro
                 meteoroScript.salud -= daño;
+                Destroy(this.gameObject);
+            }
+        }
+        if (other.tag == "NaveDeCarga")
+        {
+            NaveDeCarga naveDeCarfaScript = other.GetComponent<NaveDeCarga>();
+
+            // Verifica si se encontró el script
+            if (naveDeCarfaScript != null)
+            {
+                // Llama a la función RestarVida() en el script Meteoro
+                naveDeCarfaScript.salud -= daño;
                 Destroy(this.gameObject);
             }
         }

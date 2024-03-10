@@ -6,8 +6,8 @@ using System;
 public class SpawnMeteoro : MonoBehaviour
 {
 
-    public GameObject meteoro;
-    public GameObject Naves;
+    public GameObject [] meteoro;
+    public GameObject[] Naves;
     public GameObject[] spawnMeteoro;
     public GameObject[] spawnNaves;
     public int evento=0;
@@ -22,11 +22,14 @@ public class SpawnMeteoro : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { ConsultarEvento();
+    {
+        if (Atributos.Eventos.iniciarPartida)
+        {
+            ConsultarEvento();
 
-        ActivarEvento();
-       
-     
+            ActivarEvento();
+
+        }
     }
 
     private void ActivarEvento()
@@ -42,7 +45,7 @@ public class SpawnMeteoro : MonoBehaviour
 
                     Atributos.level.activeShip = false;
                     Atributos.level.activeMeteoritos = true;
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < 15; i++)
                     {
                         InstaciaMeteoritos();
                     }
@@ -54,18 +57,21 @@ public class SpawnMeteoro : MonoBehaviour
                 }
                 break;
             case 1:
-                if (contb > UnityEngine.Random.Range(5, 15))
-                {
-                    Debug.Log("level 2");
-                    //Atributos.level.rotationAmountCombat = 0;
-                    Atributos.level.activeShip = true;
-                    Atributos.level.activeMeteoritos = false;
-
-                    for (int i = 0; i < 3; i++)
+                if (contb > 5)
+                {if(contb < 15)
                     {
-                        InstaciaNaves();
+                        Debug.Log("level 2");
+                        //Atributos.level.rotationAmountCombat = 0;
+                        Atributos.level.activeShip = true;
+                        Atributos.level.activeMeteoritos = false;
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            InstaciaNaves();
+                        }
+                        contb = 0;
                     }
-                    contb = 0;
+                   
 
                 }
                 break;
@@ -73,11 +79,11 @@ public class SpawnMeteoro : MonoBehaviour
             case 2:
                 if (contb > UnityEngine.Random.Range(1, 3))
                 {
-                    Debug.Log("level 1");
+                    Debug.Log("level 3");
 
                     Atributos.level.activeShip = false;
                     Atributos.level.activeMeteoritos = true;
-                    for (int i = 0; i < 12; i++)
+                    for (int i = 0; i < 17; i++)
                     {
                         InstaciaMeteoritos();
                     }
@@ -88,7 +94,7 @@ public class SpawnMeteoro : MonoBehaviour
             case 3:
                 if (contb > UnityEngine.Random.Range(8, 15))
                 {
-                    Debug.Log("level 2");
+                    Debug.Log("level 4");
                     //Atributos.level.rotationAmountCombat = 0;
                     Atributos.level.activeShip = true;
                     Atributos.level.activeMeteoritos = false;
@@ -103,11 +109,11 @@ public class SpawnMeteoro : MonoBehaviour
             case 4:
                 if (contb > UnityEngine.Random.Range(1, 3))
                 {
-                    Debug.Log("level 1");
+                    Debug.Log("level 5");
 
                     Atributos.level.activeShip = false;
                     Atributos.level.activeMeteoritos = true;
-                    for (int i = 0; i < 18; i++)
+                    for (int i = 0; i < 21; i++)
                     {
                         InstaciaMeteoritos();
                     }
@@ -118,7 +124,7 @@ public class SpawnMeteoro : MonoBehaviour
             case 5:
                 if (contb > UnityEngine.Random.Range(8, 15))
                 {
-                    Debug.Log("level 2");
+                    Debug.Log("level 6");
                     //Atributos.level.rotationAmountCombat = 0;
                     Atributos.level.activeShip = true;
                     Atributos.level.activeMeteoritos = false;
@@ -142,7 +148,7 @@ public class SpawnMeteoro : MonoBehaviour
     private void ConsultarEvento()
     {
         cont += 1 * Time.deltaTime;
-        if (cont > UnityEngine.Random.Range(10, 20) && evento == 0)
+        if (cont > UnityEngine.Random.Range(50, 60) && evento == 0)
         {
             evento = 1;
             Debug.Log("el evento es " + evento);
@@ -150,9 +156,11 @@ public class SpawnMeteoro : MonoBehaviour
         }
         if (cont > UnityEngine.Random.Range(30, 40) && evento == 1)
         {
-            evento = 2;
-            Debug.Log("el evento es " + evento);
-            cont = 0;
+           
+                evento = 2;
+                Debug.Log("el evento es " + evento);
+                cont = 0;
+           
         }
         if (cont > UnityEngine.Random.Range(50, 70) && evento == 2)
         {
@@ -183,30 +191,55 @@ public class SpawnMeteoro : MonoBehaviour
 
     public void InstaciaNaves()
     {
-        int ubicacion = UnityEngine.Random.Range(0, 7);
+        int ubicacion = UnityEngine.Random.Range(0, spawnNaves.Length);
         generarNave(ubicacion);
 
     }
     public void generarNave(int ubicacion)
     {
+        int ran = UnityEngine.Random.Range(0, 100);
         try
         {
-            Instantiate(Naves, spawnNaves[ubicacion].transform.position, spawnNaves[ubicacion].transform.rotation);
-        }catch
+            if (ran < 70)
+            {
+                Instantiate(Naves[0], spawnNaves[ubicacion].transform.position, spawnNaves[ubicacion].transform.rotation);
+            }
+            else if (ran >= 70 && ran < 100)
+            {
+                Instantiate(Naves[1], spawnNaves[ubicacion].transform.position, spawnNaves[ubicacion].transform.rotation);
+
+            }
+        }
+        catch
         {
 
         }
     }
     public void InstaciaMeteoritos()
     {
-        int ubicacion = UnityEngine.Random.Range(0, 19);
+        int ubicacion = UnityEngine.Random.Range(0, spawnMeteoro.Length);
         generarMeteoro(ubicacion);
         
     }
     public void generarMeteoro( int ubicacion)
     {
-        try { 
-            Instantiate(meteoro, spawnMeteoro[ubicacion].transform.position, spawnMeteoro[ubicacion].transform.rotation);
+        
+        int ran = UnityEngine.Random.Range(0, 100);
+        try
+        {
+            if (ran < 20)
+            {
+                Instantiate(meteoro[0], spawnMeteoro[ubicacion].transform.position, spawnMeteoro[ubicacion].transform.rotation);
+            }
+            else if (ran >= 20 && ran < 60)
+            {
+                Instantiate(meteoro[1], spawnMeteoro[ubicacion].transform.position, spawnMeteoro[ubicacion].transform.rotation);
+            }
+            else if (ran >= 60)
+            {
+                Instantiate(meteoro[2], spawnMeteoro[ubicacion].transform.position, spawnMeteoro[ubicacion].transform.rotation);
+            }
+            
         }
         catch
         {

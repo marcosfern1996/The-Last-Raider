@@ -7,20 +7,28 @@ public class Meteoro : MonoBehaviour
 {
    // public static Meteoro instance;
     CinemachineMovimientoCamara cinemachineMovimientoCamara;
+    public int proBotequin;
+    public int proMejora;
+    public int proMinerales;
     public float danioANave= 20;
     public float primerContacto=0;
     public bool choque=false;
     public float salud= 20;
     public GameObject[] items;
     public ParticleSystem anim;
-
+    public float randomSize1;
+    public float randomSize2;
+    public AudioSource explocion;
+    bool activar = false;
     float cont = 0;
+    bool deadforshield;
     private void Awake()
     {
+        
         //anim = GetComponent<ParticleSystem>();
-        float randomSize = Random.Range(0.5f, 2.0f); // Ajusta los valores según tus necesidades
-        salud = salud * randomSize;
-        transform.localScale = new Vector3(randomSize, randomSize, randomSize);
+        float randomSize3 = Random.Range(randomSize1, randomSize2); // Ajusta los valores según tus necesidades
+        salud = salud * (randomSize3/10);
+        transform.localScale = new Vector3(randomSize3, randomSize3, randomSize3);
         // salud = AtributosEnemigos.saludMeteoro;
         cinemachineMovimientoCamara = GetComponent<CinemachineMovimientoCamara>();
         
@@ -36,14 +44,47 @@ public class Meteoro : MonoBehaviour
         transform.Translate(Vector3.back * Random.Range(50f, 300f) * Time.deltaTime);
 
         if (salud <= 0)
-        { int probabilidad = Random.Range(0, 100);
-                if (probabilidad < 30) {
-                Instantiate(items[0], this.transform.position, this.transform.rotation);
-            }else if(probabilidad < 60)
+        {
+            
+            int probabilidad = Random.Range(0, 100);
+           /* if (probabilidad < proMejora) {
+                int probMejoras = Random.Range(0, 100);
+                if(probMejoras < 33 && Atributos.Mejoras.ArmaLvl3 == 1)
+                {
+                    Instantiate(items[2], this.transform.position, this.transform.rotation);
+                }
+                else if (probMejoras < 66 && Atributos.Mejoras.ArmaLvl2 == 1)
+                {
+                    Instantiate(items[1], this.transform.position, this.transform.rotation);
+                }
+                else if (probMejoras < 99 && Atributos.Mejoras.ArmaLvl1 == 1)
+                {
+                    Instantiate(items[0], this.transform.position, this.transform.rotation);
+                }
+
+            }   
+            else if(probabilidad < proBotequin)
             {
-                Instantiate(items[1], this.transform.position, this.transform.rotation);
+                Instantiate(items[3], this.transform.position, this.transform.rotation);
+            }else */if(probabilidad < proMinerales)
+            {
+                Instantiate(items[0], this.transform.position, this.transform.rotation);
             }
-            Instantiate(anim, this.transform.position, this.transform.rotation);
+
+
+            if (!deadforshield && Atributos.Mejoras.Especial ==1)
+            {
+                Atributos.Nave.powerUp += Random.Range(5, 15);
+            }
+            //Atributos.Jugador.mineral++;
+            if (!activar)
+            {
+                Instantiate(anim, this.transform.position, this.transform.rotation);
+                Instantiate(explocion, this.transform.position, this.transform.rotation);
+                
+                activar = true;
+            }
+           
             Destruir();
             //Atributos.level.points++;
             
@@ -62,19 +103,30 @@ public class Meteoro : MonoBehaviour
         if (other.tag == "Player")
         {
             
-           MoverNave.instance.RestarVida(Atributos.Meteorito.danioMeteoro) ;
+           MoverNave.instance.RestarVida(danioANave) ;
            Choque();
             if (Atributos.Jugador.nivelArma > 0 && !choque)
             {
                 choque = true;
-                Atributos.Jugador.nivelArma--;
+              //  Atributos.Jugador.nivelArma--;
             }
+            if (!activar)
+            {
+                Instantiate(anim, this.transform.position, this.transform.rotation);
+                Instantiate(explocion, this.transform.position, this.transform.rotation);
 
+                activar = true;
+            }
             Destruir();
                 
 
            
             
+        }
+        if (other.tag == "PowerUp")
+        {
+            deadforshield = true;
+            salud = 0;
         }
     }
 

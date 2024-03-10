@@ -37,12 +37,17 @@ public class Bala1 : MonoBehaviour
             if (Atributos.Jugador.nivelArma > 0 && !choque)
             {
                 choque = true;
-                Atributos.Jugador.nivelArma--;
+                //Atributos.Jugador.nivelArma--;
             }
             Destroy(this.gameObject);
         }
         if(other.tag =="BulletPlayer")
         {
+            Destroy(this.gameObject);
+        }
+        if (other.tag == "PowerUp")
+        {
+
             Destroy(this.gameObject);
         }
     }

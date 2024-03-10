@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,13 @@ public class DispararNave : MonoBehaviour
     public static DispararNave instance;
     public AudioClip disparo;
     public AudioSource fxSourse;
+    public AudioSource agarrarArmaNueva;
+    public AudioSource agarrarMineral;
+    public GameObject ondaExpanciva;
+    public ParticleSystem agarrarCuracion;
+    public ParticleSystem MejoraVerde;
+    public ParticleSystem MejoraAAmarilla;
+    public ParticleSystem MejoraRoja;
 
     public float contador = 0;
     RaycastHit hit;
@@ -18,6 +26,7 @@ public class DispararNave : MonoBehaviour
 
     private void Awake()
     {
+        
         instance = this;
     }
     // Start is called before the first frame update
@@ -28,13 +37,83 @@ public class DispararNave : MonoBehaviour
 
     void Update()
     {
-
-        contador += 3 * Time.deltaTime;
-        if (contador >= 1 && Atributos.Nave.activarNave)
+        if (Atributos.Eventos.iniciarPartida)
         {
-            disparar();
+            agarrarBotequin();
+
+            AgarrarMineral();
+            agarrarArma();
+            agarrarArmaVerde();
+            agarrarArmaAmarilla();
+            agarrarArmaRoja();
+
+
+            contador += 3 * Time.deltaTime;
+            if (contador >= 1 && Atributos.Nave.activarNave && Atributos.level.Arrancar)
+            {
+                disparar();
+            }
+
+        }
+
+    }
+
+    private void agarrarArmaVerde()
+    {
+        if (Atributos.Eventos.mejoraArmaVerde)
+        {
+            MejoraVerde.Play();
+            Atributos.Eventos.mejoraArmaVerde = false;
         }
     }
+
+    private void agarrarArmaAmarilla()
+    {
+        if (Atributos.Eventos.mejoraArmaAmarilla)
+        {
+            MejoraAAmarilla.Play();
+            Atributos.Eventos.mejoraArmaAmarilla = false;
+        }
+    }
+
+    private void agarrarArmaRoja()
+    {
+        if (Atributos.Eventos.mejoraArmaRoja)
+        {
+            MejoraRoja.Play();
+            Atributos.Eventos.mejoraArmaRoja = false;
+        }
+    }
+
+    private void agarrarBotequin()
+    {
+        if (Atributos.Eventos.curacion)
+        {
+            agarrarCuracion.Play();
+            Atributos.Eventos.curacion = false;
+        }
+       
+    }
+
+    private void AgarrarMineral()
+    {
+    if (Atributos.Eventos.mineral)
+    {
+        agarrarMineral.Play();
+        Atributos.Eventos.mineral = false;
+        }
+    }
+
+    private void agarrarArma()
+{
+    if (Atributos.Eventos.mejoraArma)
+    {
+        agarrarArmaNueva.Play();
+        Atributos.Eventos.mejoraArma = false;
+        }
+    }
+
+
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -50,7 +129,14 @@ public class DispararNave : MonoBehaviour
     }
 
 
-
+    public void escudo()
+    {
+        if(Atributos.Nave.powerUp >= 100)
+        {
+            Instantiate(ondaExpanciva, this.transform.position, this.transform.rotation);
+            Atributos.Nave.powerUp = 0;
+        }
+    }
 
     public void disparar()
     {

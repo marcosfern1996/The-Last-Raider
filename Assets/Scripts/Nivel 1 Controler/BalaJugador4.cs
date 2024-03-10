@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BalaJugador4 : MonoBehaviour
 {
-    public float velocidad = 400f; // Velocidad de la bala
+    public float velocidad = 80; // Velocidad de la bala
     private Rigidbody rb;
     float cont = 0;
     public int daño = 25;
@@ -24,7 +24,7 @@ public class BalaJugador4 : MonoBehaviour
     private void Update()
     {
         cont += 1 * Time.deltaTime;
-        if (cont > 5)
+        if (cont > 0.5)
         {
             Destroy(this.gameObject);
         }
@@ -54,6 +54,18 @@ public class BalaJugador4 : MonoBehaviour
             {
                 // Llama a la función RestarVida() en el script Meteoro
                 meteoroScript.salud -= daño;
+                Destroy(this.gameObject);
+            }
+        }
+        if (other.tag == "NaveDeCarga")
+        {
+            NaveDeCarga naveDeCarfaScript = other.GetComponent<NaveDeCarga>();
+
+            // Verifica si se encontró el script
+            if (naveDeCarfaScript != null)
+            {
+                // Llama a la función RestarVida() en el script Meteoro
+                naveDeCarfaScript.salud -= daño;
                 Destroy(this.gameObject);
             }
         }

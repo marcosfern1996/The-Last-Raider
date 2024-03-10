@@ -13,6 +13,8 @@ TagManager:
   - BalaNave
   - Bullet
   - BulletPlayer
+  - PowerUp
+  - NaveDeCarga
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - UI
   - pared
   - puerta
-  - 
+  - UI3d
   - 
   - 
   - 

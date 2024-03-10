@@ -15,56 +15,76 @@ public class ActivarMenus : MonoBehaviour
 
     public GameObject camaraCombate;
     public GameObject camaraViaje;
+    public GameObject camaraInicio;
     public GameObject agujeroDeGusano;
 
     public bool cambiarEvento;
-
+    public int especial;
     float cont = 0;
+    float Comienzo =0 ;
 
     private void Awake()
     {
+        Atributos.level.Arrancar = true;
+        especial = Atributos.Mejoras.Especial;
+        Atributos.CargarDatos();
         Time.timeScale = 1;
         Atributos.level.points = 0;
-        /*
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-            }
-        }*/
+        Atributos.level.NavesDestruidas = 0;
+        Atributos.Nave.powerUp = 0;
+        camaraCombate.SetActive(false);
+        camaraInicio.SetActive(false);
+        camaraViaje.SetActive(true);
     }
-
+    private void Start()
+    {
+        Atributos.level.Arrancar = false;
+       
+    }
     private void Update()
     {
-        if (Atributos.level.activeMeteoritos)
+        if (Atributos.Eventos.iniciarPartida)
         {
-            cont += 1 * Time.deltaTime;
-            if(cont >= 3)
+            Comienzo += 1 * Time.deltaTime;
+            if (Comienzo >= 3 && !Atributos.level.Arrancar)
             {
-                Atributos.level.points++;
-                cont = 0;
+                Atributos.level.Arrancar = true;
             }
-          
-            camaraViaje.SetActive(true);
-            camaraCombate.SetActive(false);
-            agujeroDeGusano.SetActive(true);
 
+            if (Atributos.level.NavesDestruidas >= 50)
+            {
+                Atributos.Mejoras.nivelFinal = 1;
+            }
+            Atributos.Mejoras.Especial = especial;
+            if (Atributos.level.activeMeteoritos)
+            {
+                cont += 1 * Time.deltaTime;
+                //if(cont >= 3)
+                //{
+                //    Atributos.level.points++;
+                //    cont = 0;
+                //  }
+                if (cont >= 0.5)
+                {
+                    camaraViaje.SetActive(true);
+                    camaraCombate.SetActive(false);
+                    agujeroDeGusano.SetActive(true);
+                    cont = 0;
+                }
+            }
+            else if (!Atributos.level.activeMeteoritos)
+            {
+
+
+                camaraViaje.SetActive(false);
+                camaraCombate.SetActive(true);
+                agujeroDeGusano.SetActive(false);
+                cont = 0;
+
+
+            }
         }
-        else if (!Atributos.level.activeMeteoritos)
-        {
-          
-           
-            camaraViaje.SetActive(false);
-            camaraCombate.SetActive(true);
-            agujeroDeGusano.SetActive(false);
-        }
+       
     }
 
     public void ActivarPuerta()
@@ -93,20 +113,13 @@ public class ActivarMenus : MonoBehaviour
         panelPausa.SetActive(false);
         panelJuego.SetActive(true);
         panelGameOver.SetActive(false);
-        // cargarEscena();
-        int indiceDeEscena = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(indiceDeEscena);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //int indiceDeEscena = SceneManager.GetActiveScene().buildIndex;
+        //SceneManager.LoadScene(indiceDeEscena);
         Time.timeScale = 1;
 
     }
-    /* public void cargarEscena()
-     {
-
-
-         CargarPartida();
-         ActivarMenus.Instance.panelPausa.SetActive(false);
-         ActivarMenus.Instance.panelJuego.SetActive(true);
-     }*/
+   
     public void IrAlMenu()
     {
         SceneManager.LoadScene(0);
@@ -118,15 +131,6 @@ public class ActivarMenus : MonoBehaviour
         panelJuego.SetActive(false);
         panelGameOver.SetActive(true);
         Time.timeScale = 0;
-
-    }
-
-   public void ActivarModoCombate()
-    {
-
-    }
-    public void ActivarModoViaje()
-    {
 
     }
 

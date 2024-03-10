@@ -22,6 +22,7 @@ public class Botequin : MonoBehaviour
         {
             if (MoverNave.instance.saludNave < 100)
             {
+                Atributos.Eventos.curacion = true;
                 MoverNave.instance.SumarVida(20);
                 Destroy(this.gameObject);
             }
