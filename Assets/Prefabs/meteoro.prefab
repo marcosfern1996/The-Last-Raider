@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8560686754047395550}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 7cb8fdd2b89cb3041b5391991524eaab, type: 3}
+  - {fileID: 2100000, guid: 03231206070081848aa96969f4db9924, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8560686754047395550}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -122,8 +122,8 @@ MonoBehaviour:
   items:
   - {fileID: 1147076027739667416, guid: 17119b2cc73de1248bf03bdc2e104773, type: 3}
   anim: {fileID: 2273832991953550852, guid: c1df71eb9fb562346b1a1c5b66c956ac, type: 3}
-  randomSize1: 2
-  randomSize2: 10
+  randomSize1: 10
+  randomSize2: 15
   explocion: {fileID: 6769090862565022179, guid: 43f34e7d8a4f64e40a8d3317184afb86, type: 3}
 --- !u!82 &8889928554436861367
 AudioSource:

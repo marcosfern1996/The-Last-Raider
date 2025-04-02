@@ -13,7 +13,7 @@ public class Meteoro : MonoBehaviour
     public float danioANave= 20;
     public float primerContacto=0;
     public bool choque=false;
-    public float salud= 20;
+    public float salud= 2;
     public GameObject[] items;
     public ParticleSystem anim;
     public float randomSize1;
@@ -27,7 +27,7 @@ public class Meteoro : MonoBehaviour
         
         //anim = GetComponent<ParticleSystem>();
         float randomSize3 = Random.Range(randomSize1, randomSize2); // Ajusta los valores según tus necesidades
-        salud = salud * (randomSize3/10);
+        salud = salud * (randomSize3/20);
         transform.localScale = new Vector3(randomSize3, randomSize3, randomSize3);
         // salud = AtributosEnemigos.saludMeteoro;
         cinemachineMovimientoCamara = GetComponent<CinemachineMovimientoCamara>();

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8560686754047395550}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,6 +122,6 @@ MonoBehaviour:
   - {fileID: 2322789370450927255, guid: 043744afbabc0e141b235314b333ca63, type: 3}
   - {fileID: 2322789370450927255, guid: c8d39c908393e8c47af53a04a7a6ad73, type: 3}
   anim: {fileID: 2273832991953550852, guid: c1df71eb9fb562346b1a1c5b66c956ac, type: 3}
-  randomSize1: 5
-  randomSize2: 10
+  randomSize1: 10
+  randomSize2: 15
   explocion: {fileID: 6769090862565022179, guid: 43f34e7d8a4f64e40a8d3317184afb86, type: 3}
